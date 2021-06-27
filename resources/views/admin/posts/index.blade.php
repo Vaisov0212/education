@@ -43,7 +43,7 @@
                                 @foreach($posts as $post)
                                 <tr>
                                     <td>
-                                        <img class="img img-thumbnail" width="80px" src="../../upload/thumb/{{$post->img }}" alt="Rasm topilmadi!">
+                                        <img class="img img-thumbnail" width="80px" src="../../storage/thumb/{{$post->img }}" alt="Rasm topilmadi!">
                                     </td>
                                     <td>{{$post->name}}</td>
                                     <td>{{$post->subject}}</td>
