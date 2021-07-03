@@ -69,7 +69,7 @@ class PostController extends Controller
         if(!empty($request->file('select_file')))
         {
             Storage::disk('public')->delete('posts/'.$post->img);
-            // Storage::disk('s3')->delete('/upload/thumb'.$post->img);
+            Storage::disk('public')->delete('thumb/'.$post->img);
 
             $new_name="images".microtime().".jpg";
              $img=Image::make($request->file('select_file'));
@@ -104,6 +104,8 @@ class PostController extends Controller
 
         public function destroy($id){
             $post=Post::findOrFail($id);
+            Storage::disk('public')->delete('posts/'.$post->img);
+            Storage::disk('public')->delete('thumb/'.$post->img);
             $post->delete();
 
             return redirect()->route('admin.posts.index')->with('delete','Malumotlar O`chirildi !');

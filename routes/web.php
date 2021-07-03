@@ -20,6 +20,7 @@ Route::get('/','SiteController@index')->name('home');
 Route::get('/about','SiteController@about')->name('about_us');
 Route::get('/contact','SiteController@contact')->name('contact_us');
 Route::get('/blog','SiteController@blog')->name('news');
+Route::get('/blog/{id}','SiteController@show')->name('show_blog');
 
 Route::namespace('Admin')->name('admin.')->prefix('/c-admin')->group(function(){
 
