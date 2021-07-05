@@ -10,7 +10,8 @@
 	<link href="/admin/css/styles.css" rel="stylesheet">
 
 	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=uzbekistan,urgench,amina&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
+	{{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> --}}
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
@@ -99,13 +100,12 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li ><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li ><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-			<li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
-            <li @if($title="Yangiliklar")class="active" @endif><a href="{{route('admin.posts.index')}}"><em class="fa fa-navicon">&nbsp;</em> Yangiliklar</a></li>
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li ><a href="#"><em class="fa fa-dashboard">&nbsp;</em> Uy Sahifa</a></li>
+			<li ><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> So'rovlar</a></li>
+            <li @if($title="Yangiliklar")class="active" @endif ><a href="{{route('admin.posts.index')}}"><em class="fa fa-navicon">&nbsp;</em> Yangiliklar</a></li>
+
+			<li @if($title="Xabarlar")class="active" @endif><a href="{{route('admin.feedback.index')}}"><em class="glyphicon glyphicon-envelope"></em> Xabarlar</a></li>
+			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> chiqish</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 

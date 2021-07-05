@@ -12,7 +12,29 @@
     </div>
 </div>
 </section>
+<br>
+    <div class="row">
+        <div class="col-lg-12">
+            @if(count($errors) > 0 )
+            <div class="alert bg-warning" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+                <ul>
+                     @foreach($errors->all() as $error )
+                     <li>{{$error }} </li>
+                     @endforeach
 
+               </ul>
+              </div>
+
+            @endif
+            @if(\Session::has('success'))
+                <div style="padding: 10px; text-align:center;">
+                    <div class="alert alert-primary" role="alert"><i class=""></i>
+                    {{\Session::get('success')}}
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div><!--/.row-->
 <section class="ftco-section contact-section">
     <div class="container">
       <div class="row d-flex mb-5 contact-info">
@@ -48,26 +70,27 @@
           <div class="container">
               <div class="row d-flex align-items-stretch no-gutters">
                   <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
-                      <form action="#">
+                      <form action="{{route('contact')}}" method="POST" enctype="multipart/form-data" >
+                        @csrf
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" class="form-control" name="name" placeholder="Ism, Familya" required >
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email">
+              <input type="text" class="form-control" name="email" placeholder="Email" required >
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
+              <input type="text" class="form-control" name="subject" placeholder="Mavzu" required >
             </div>
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <textarea  id="message" cols="30" rows="7" name="message" class="form-control" placeholder="Xabar matni" required></textarea>
             </div>
             <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                <button class="btn btn-warning py-3 px-5" > Yuborish </button>
             </div>
           </form>
                   </div>
                   <div class="col-md-6 d-flex align-items-stretch">
-                      <div id="map"></div>
+                    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=uzbekistan,urgench,amina&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
                   </div>
               </div>
           </div>

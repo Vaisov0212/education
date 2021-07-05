@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-
+use App\Contact;
 class SiteController extends Controller
 {
 
@@ -17,8 +17,27 @@ class SiteController extends Controller
         return view('about-us');
     }
 
-    public function contact(){
+    public function contact_us(){
         return view('contact-us');
+    }
+
+    public function contact(Request $request){
+
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required'
+    ]);
+        $contact=new Contact([
+            'name'=>$request->post('name'),
+            'email'=>$request->post('email'),
+            'subject'=>$request->post('subject'),
+            'message'=>$request->post('message'),
+            'report'=>false
+        ]);
+        $contact->save();
+        return redirect()->back()->with('success','Xabar muofaqiyatli jo`natildi');
     }
 
     public function blog(){
