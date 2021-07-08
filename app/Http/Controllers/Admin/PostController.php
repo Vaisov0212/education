@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Message;
+use App\Contact;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -11,10 +13,16 @@ class PostController extends Controller
     public function index(){
         $posts=Post::orderBy('id','desc')->latest()->paginate(15);
         $links=$posts->links();
-        return view('admin.posts.index',compact('posts','links'));
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+
+        return view('admin.posts.index',compact('posts','links','smsMessage','smsContact'));
     }
     public function create(){
-        return view('admin.posts.create');
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+
+        return view('admin.posts.create',compact('smsMessage','smsContact'));
     }
     public function store(Request $request){
         $this->validate($request,[
@@ -53,8 +61,9 @@ class PostController extends Controller
 
     public function edit($id){
         $post=Post::findOrFail($id);
-
-        return view('admin.posts.edit',compact('post'));
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+        return view('admin.posts.edit',compact('post','smsMessage','smsContact'));
     }
 
     public function update(Request $request, $id){

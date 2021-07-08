@@ -25,20 +25,20 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Star</span>Kids</a>
+				<a class="navbar-brand" ><span>ST</span>AR</a>
 				<ul class="nav navbar-top-links navbar-right">
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="{{route('admin.message.index')}}">
+					<em class="fa fa-envelope"></em>@if($smsMessage<0)<span class="label label-danger">{{$smsMessage}}</span>@endif
 					</a>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-bell"></em><span class="label label-info">5</span>
+					<li class="dropdown"><a class="dropdown-toggle count-info"  data-toggle="dropdown" href="{{route('admin.feedback.index')}}">
+						<em class="fa fa-bell"></em>@if($smsContact>0)<span class="label label-info">{{$smsContact}}</span>@endif
 					</a>
 					</li>
                     <li class="dropdown">
 						<form action="{{route('logout')}}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-danger" style="padding:10px;" > <i  class="fa fa-power-off" style="margin:2px"></i> </button>
+                            <button type="submit" class="btn btn-primary" style="padding:10px;" > <i  class="fa fa-power-off" style="margin:2px"></i> </button>
                         </form>
 					</li>
 				</ul>
@@ -51,7 +51,7 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
+				<div class="profile-usertitle-name">Admin</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
@@ -63,7 +63,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li ><a href="#"><em class="fa fa-dashboard">&nbsp;</em> Uy Sahifa</a></li>
+			<li  class="@if($title=="Uy") active  @endif "  ><a href="{{route('admin.dashboard')}}"><em class="fa fa-dashboard">&nbsp;</em> Uy Sahifa</a></li>
 			<li @if($title=='Sorovlar') class="active"@endif  ><a href="{{route('admin.message.index')}}"><em class="fa fa-calendar">&nbsp;</em> So'rovlar</a></li>
             <li class="@if($title=="Yangiliklar") active  @endif "  ><a href="{{route('admin.posts.index')}}"><em class="fa fa-navicon">&nbsp;</em> Yangiliklar</a></li>
 

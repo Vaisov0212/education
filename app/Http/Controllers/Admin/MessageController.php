@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Message;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -16,7 +17,9 @@ class MessageController extends Controller
     {
         $messages=Message::latest()->paginate(20);
         $links=$messages->links();
-        return view('admin.message.index',compact('messages','links'));
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+        return view('admin.message.index',compact('messages','links','smsMessage','smsContact'));
     }
 
 
@@ -27,7 +30,9 @@ class MessageController extends Controller
         $message->update([
                 'appReport'=>true
         ]);
-        return view('admin.message.show', compact('message'));
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+        return view('admin.message.show', compact('message','smsMessage','smsContact'));
 
     }
 

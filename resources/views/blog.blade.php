@@ -21,7 +21,7 @@
 
         <div class="col-md-6 col-lg-4 ftco-animate">
           <div class="blog-entry">
-            <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('/images/image_6.jpg');">
+            <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('../storage/posts/{{$item->img}}');">
                               <div class="meta-date text-center p-2">
                 <span class="day">{{$item->created_at->format('d')}}</span>
                 <span class="mos">{{$item->created_at->format('M')}}</span>

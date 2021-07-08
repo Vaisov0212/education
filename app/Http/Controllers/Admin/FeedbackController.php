@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contact;
+use App\Message;
 class FeedbackController extends Controller
 {
 
@@ -13,7 +14,10 @@ class FeedbackController extends Controller
 
         $feedbacks=Contact::latest()->paginate(20);
         $links=$feedbacks->links();
-        return view('admin/feedback/index', compact('feedbacks','links'));
+
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+        return view('admin/feedback/index', compact('feedbacks','links','smsMessage','smsContact'));
 
     }
 
@@ -23,7 +27,9 @@ class FeedbackController extends Controller
         $feedback->update([
             'report'=>true
         ]);
-        return view('admin.feedback.show', compact('feedback'));
+        $smsMessage=Message::where('appReport','=', false)->get()->count();
+        $smsContact=Contact::where('report','=', false)->get()->count();
+        return view('admin.feedback.show', compact('feedback','smsMessage','smsContact'));
     }
 
 
