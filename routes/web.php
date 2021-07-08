@@ -17,13 +17,14 @@
 // });
 
 Route::get('/','SiteController@index')->name('home');
+Route::post('/','SiteController@appStore')->name('message');
 Route::get('/about-us','SiteController@about')->name('about_us');
 Route::get('/contact-us','SiteController@contact_us')->name('contact_us');
 Route::get('/blog','SiteController@blog')->name('news');
 Route::get('/blog/{id}','SiteController@show')->name('show_blog');
 Route::post('/contact','SiteController@contact')->name('contact');
 
-Route::namespace('Admin')->name('admin.')->prefix('/c-admin')->group(function(){
+Route::namespace('Admin')->name('admin.')->middleware('auth')->prefix('/c-admin')->group(function(){
 
 Route::get('/', function(){
     return view('admin.dashboard');
@@ -31,6 +32,8 @@ Route::get('/', function(){
 Route::resource('/feedback', 'FeedbackController');
 
 Route::resource('/posts','PostController');
+
+Route::resource('/message','MessageController');
 
 });
 

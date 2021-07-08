@@ -1,4 +1,4 @@
-<?php $title="Xabarlar" ?>
+<?php $title="Sorovlar" ?>
 
 @include('admin.layouts.header')
 <div class="row">
@@ -11,56 +11,60 @@
             </div>
         @endif
     </div>
+</div><!--/.row-->
 
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="{{route('admin.feedback.index')}}"> <em class="fa fa-home"></em></a></li>
-            <li class="active"><a href="{{route('admin.posts.index')}}">Xabarlar</a></li>
+            <li class="active"><a href="{{route('admin.posts.index')}}">So'rovlar</a></li>
         </ol>
     </div><!--/.row-->
 <div class="row">
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel panel-default">
-            <div class="panel-heading">Xabarlar ro'yhati </div>
+            <div class="panel-heading">So'rovlar ro'yxati</div>
                 <div class="panel-body">
                     <table class="table table-bordered">
                         <thead>
-                            <th >Mavzu</th>
-                            <th>Ism, Famlya</th>
-                            <th width="180px">e-mail</th>
+                            <th >Ism</th>
+                            <th>Familya</th>
+                            <th width="180px">Kurs nomi</th>
+                            <th width="180px">Telfon raqami</th>
                             <th width="80px"> vaqti</th>
                             <th width="80px" >Amallar</th>
 
 
                         </thead>
                          <tbody>
-                            @foreach($feedbacks as $feedback)
+                            @foreach($messages as $item)
                             <tr>
-                               <td>{{$feedback->subject}}</td>
-                               <td>{{$feedback->name}}</td>
-                               <td>{{$feedback->email}}</td>
-                               <td>{{$feedback->created_at->format("Y/m/d  H:m")}}</td>
+                               <td>{{$item->first_name}}</td>
+                               <td>{{$item->last_name}}</td>
+                               <td>{{$item->course}}</td>
+                               <td>{{$item->phone}}</td>
+
+                               <td>{{$item->created_at->format("Y/m/d  H:m")}}</td>
                                <td>
                                     <div style="display:flex; padding-top: 10px; padding-bottom:10px;">
-                                        <a href="{{route('admin.feedback.show',$feedback->id)}}" style="margin-left: 5px" class="btn btn-sm btn-warning">
+                                        <a href="{{route('admin.message.show',$item->id)}}" style="margin-left: 5px" class="btn btn-sm btn-warning">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <form action="{{route('admin.feedback.destroy', $feedback->id)}}" method="POST">
+                                        <form action="{{route('admin.message.destroy', $item->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button style="margin-left: 5px" class="btn btn-sm btn-danger">
                                              <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
-                                        @if($feedback->report===1)
+                                        @if($item->report===1)
                                         <a style="margin-left: 5px" class="btn btn-sm btn-success">
                                             <i class="fa fa-check"></i>
                                         </a>
                                         @endif
-                                        @if($feedback->report===0)
+                                        @if($item->report===0)
                                         <a style="margin-left: 5px" class="btn btn-sm btn-primary">
                                             <i class="glyphicon glyphicon-envelope"></i>
                                         </a>

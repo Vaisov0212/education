@@ -402,7 +402,30 @@
       </div>
     </div>
   </section>
+  <br>
+  <div class="row">
+      <div class="col-lg-12">
+          @if(count($errors) > 0 )
+          <div class="alert bg-warning" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+              <ul>
+                   @foreach($errors->all() as $error )
+                   <li>{{$error }} </li>
+                   @endforeach
 
+             </ul>
+            </div>
+
+          @endif
+          @if(\Session::has('success'))
+              <div style="padding: 10px; text-align:center;">
+                  <div class="alert alert-primary" role="alert"><i class=""></i>
+
+                     {{\Session::get('success')}}
+                  </div>
+              </div>
+          @endif
+      </div>
+  </div><!--/.row-->
   <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" style="background-image: url(images/bg_5.jpg);" data-stellar-background-ratio="0.5">
       <div class="container">
           <div class="row justify-content-end">
@@ -411,47 +434,52 @@
               <h2 class="mb-4">Request A Quote</h2>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
-            <form action="#" class="appointment-form ftco-animate">
-                      <div class="d-md-flex">
-                          <div class="form-group">
-                              <input type="text" class="form-control" placeholder="First Name">
-                          </div>
-                          <div class="form-group ml-md-4">
-                              <input type="text" class="form-control" placeholder="Last Name">
-                          </div>
-                      </div>
-                      <div class="d-md-flex">
-                          <div class="form-group">
-                              <div class="form-field">
-                            <div class="select-wrap">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control">
-                        <option value="">Select Your Course</option>
-                      <option value="">Art Lesson</option>
-                      <option value="">Language Lesson</option>
-                      <option value="">Music Lesson</option>
-                      <option value="">Sports</option>
-                      <option value="">Other Services</option>
-                    </select>
+            <form action="{{route('message')}}" class="appointment-form ftco-animate" method="POST" enctype="multipart/form-data" >
+                @csrf
+                @method('POST')
+                <div class="d-md-flex">
+                  <div class="form-group">
+                  <input name="first_name" type="text" class="form-control" placeholder="Ism"  required>
                   </div>
+                <div class="form-group ml-md-4">
+                <input name="last_name" type="text" class="form-control" placeholder="Familya" required>
+                </div>
+              </div>
+              <div class="d-md-flex">
+                  <div class="form-group" >
+                    <div class="form-field">
+                        <div class="select-wrap" >
+                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                            <select name="course" id=""  class="form-control" >
+                            <option  style="background-color:#1eaaf1" value="Rus tili">Rus tili</option>
+                            <option style="background-color:#1eaaf1" value="Arab tili">Arab tili</option>
+                            <option style="background-color:#1eaaf1" value="Ingillis tili">Ingillis tili</option>
+                             <option style="background-color: #1eaaf1" value="Matematika">Matematika</option>
+                            <option style="background-color: #1eaaf1" value="IT">IT</option>
+                            </select>
+                        </div>
                     </div>
-                          </div>
-                          <div class="form-group ml-md-4">
-                              <input type="text" class="form-control" placeholder="Phone">
-                          </div>
-                      </div>
-                      <div class="d-md-flex">
-                          <div class="form-group">
-                    <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
                   </div>
                   <div class="form-group ml-md-4">
-                    <input type="submit" value="Request A Quote" class="btn btn-secondary py-3 px-4">
-                  </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style=" border: none;border-bottom: 3px solid #1eaaf1;background-color: #1eaaf1"  id="basic-addon1">+998</span>
+                        <input type="number" class="form-control" name="phone" placeholder="Tel:" aria-describedby="basic-addon1"  >
                       </div>
-                  </form>
-              </div>
-      </div>
-      </div>
+                    {{-- <span class="input-group-text">$</span> --}}
+                     {{-- <input type="number" name="phone" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Telfon raqam" required> --}}
+                  </div>
+                </div>
+                <div class="d-md-flex">
+                <div class="form-group">
+                </div>
+                <div class="form-group ml-md-4">
+                    <button type="ssubmit" class="btn btn-secondary py-3 px-4" > Yuborish </button>
+                </div>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
   </section>
 
       <section class="ftco-section bg-light">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Contact;
+use App\Message;
+use App\Services\SendTelegramService;
 class SiteController extends Controller
 {
 
@@ -51,6 +53,36 @@ class SiteController extends Controller
         $post=Post::findOrFail($id);
         $fours=Post::orderBy('views','asc')->limit(5)->get();
         return view('show',compact('post','fours'));
+    }
+
+    public function appStore(Request $request){
+
+       $data=$request->validate([
+            'first_name'=>'required|min:3',
+            'last_name'=>'required|min:3',
+            'course'=>'required',
+            'phone'=>'required|min:9|max:9'
+        ]);
+
+        $message='Ism: '.$data['last_name'].PHP_EOL;
+        $message.='Familya: '.$data['first_name'].PHP_EOL;
+        $message.='Kurs nomi: '.$data['course'].PHP_EOL;
+        $message.='Tel: +998'.$data['phone'];
+
+
+        Message::create([
+        'first_name'=>$data['first_name'],
+        'last_name'=>$data['last_name'],
+        'course'=>$data['course'],
+        'phone'=>'+998'.$data['phone'],
+        'appReport'=>false
+       ]);
+
+        // send to telegram
+        SendTelegramService::send($message);
+
+       return redirect()->back()->with('success','Sorov yuborildi tez orada xodimlarimiz siz bilan bg`lanadi.');
+
     }
 
 }
