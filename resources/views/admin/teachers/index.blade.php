@@ -1,11 +1,13 @@
-<?php $title="Yangiliklar";?>
+<?php $title="Xodimlar";?>
 @include('admin.layouts.header')
+
+
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="{{route('admin.dashboard')}}"> <em class="fa fa-home"></em></a></li>
-            <li class="active"><a href="{{route('admin.posts.index')}}">Yangiliklar</a></li>
+            <li class="active"><a href="{{route('admin.teachers.index')}}">Xodimlar</a></li>
         </ol>
     </div><!--/.row-->
     <div class="row">
@@ -18,13 +20,13 @@
             @endif
         </div>
     </div><!--/.row-->
-
     <div class="row">
         <div class="col-lg-12">
             @if(session()->has('delete'))
             <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
                     {{session()->get('delete')}}
-            </div>
+                   </div>
+
             @endif
         </div>
     </div><!--/.row-->
@@ -33,7 +35,7 @@
 		<div class="panel panel-default">
             <div class="panel panel-default">
 				<div style="text-align: right; padding:10px">
-                        <a href="{{route('admin.posts.create')}}" class="btn btn-sm btn-primary" >
+                        <a href="{{route('admin.teachers.create')}}" class="btn btn-sm btn-primary" >
                             <i style="padding: 5px" class="fa fa-pencil">
                             </i>qo'shsish
                         </a>
@@ -42,26 +44,27 @@
                         <table class="table table-bordered">
                             <thead>
                                 <th width="100px">Rasm</th>
-                                <th width="240px">Muallif</th>
-                                <th >Sarlavha</th>
+                                <th width="240px">Ism Familya:</th>
+                                <th >Mutaxasisligi</th>
                                 <th width="40px">qo'shilgan vaqti</th>
                                 <th width="80px" >Amallar</th>
                             </thead>
                              <tbody>
-                                @foreach($posts as $post)
+                                @foreach($teachers as $teacher)
                                 <tr>
                                     <td>
-                                        <img class="img img-thumbnail" width="80px" src="/storage/app/public/thumb/{{$post->img }}" alt="Rasm topilmadi!">
+                                        <img class="img img-thumbnail" width="80px" src="/storage/app/public/thumb/{{$teacher->t_img }}" alt="Rasm topilmadi!">
                                     </td>
-                                    <td>{{$post->name}}</td>
-                                    <td>{{$post->subject}}</td>
-                                    <td>{{$post->created_at->format("Y/m/d H:i")}}</td>
+                                    <td>{{$teacher->name}}</td>
+                                    <td>{{$teacher->profession}}</td>
+                                    <td>{{$teacher->created_at->format("Y/m/d H:i")}}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="panel panel-default" style="display: flex; ">
-                                                 <a style="margin-right: 5px;" class="btn btn-sm btn-warning" href="{{route('admin.posts.edit', $post->id)}}"><i class="fa fa-edit"></i></a>
-                                                 <form  method="POST" action="{{route('admin.posts.destroy',$post->id)}}" >
+                                                    <a style="margin-right: 5px;" class="btn btn-sm btn-success" href="{{route('admin.teachers.show', $teacher->id)}}"><i class="fa fa-eye"></i></a>
+                                                 <a style="margin-right: 5px;" class="btn btn-sm btn-warning" href="{{route('admin.teachers.edit', $teacher->id)}}"><i class="fa fa-edit"></i></a>
+                                                 <form  method="POST" action="{{route('admin.teachers.destroy',$teacher->id)}}" >
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger" id="onDelete" name="button-1" aria-required="false"><i class="fa fa-trash"></i></button>

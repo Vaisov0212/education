@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-    <p class="back-link">web разработчик<a href="https://cavalary.epziy.com">Vaisov Azamat</a></p>
+    <p class="back-link">web разработчик <a href="http://cavalry.epizy.com/"> Ваисов Азамат</a></p>
 </div>
 </div><!--/.row-->
 </div>	<!--/.main-->

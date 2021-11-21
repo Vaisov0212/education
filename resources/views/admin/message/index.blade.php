@@ -1,25 +1,32 @@
 <?php $title="Sorovlar" ?>
 
 @include('admin.layouts.header')
-<div class="row">
-    <div class="col-lg-12">
-        @if(\Session::has('delete'))
-            <div style="padding: 10px; text-align:center;">
-                <div class="alert alert-danger" role="alert"><i class=""></i>
-                {{\Session::get('delete')}}
-                </div>
-            </div>
-        @endif
-    </div>
-</div><!--/.row-->
-
-</div>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
-            <li><a href="{{route('admin.feedback.index')}}"> <em class="fa fa-home"></em></a></li>
-            <li class="active"><a href="{{route('admin.posts.index')}}">So'rovlar</a></li>
+            <li><a href="{{route('admin.dashboard')}}"> <em class="fa fa-home"></em></a></li>
+            <li class="active"></li>
         </ol>
+    </div><!--/.row-->
+    <div class="row">
+        <div class="col-lg-12">
+            @if(session()->has('success'))
+            <div class="alert bg-success" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+                    {{session()->get('success')}}
+                   </div>
+
+            @endif
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            @if(session()->has('delete'))
+            <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+                    {{session()->get('delete')}}
+            </div>
+            @endif
+        </div>
     </div><!--/.row-->
 <div class="row">
 <div class="col-lg-12">

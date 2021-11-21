@@ -39,12 +39,12 @@ class PostController extends Controller
          $watermark = Image::make('logo.png');
 
          $img->insert($watermark, 'bottom-right');
-         $img->save('storage/posts/'.$new_name);
+         $img->save('storage/app/public/posts/'.$new_name);
 
          //image resize
        $img->fit(360, 280, function($constraint){
          $constraint->aspectRatio();
-     })->save('storage/thumb/'.$new_name);
+     })->save('storage/app/public/thumb/'.$new_name);
 
         $post=new Post([
             'name'=>$request->post('name'),
@@ -87,12 +87,12 @@ class PostController extends Controller
               $watermark = Image::make('logo.png');
 
             $img->insert($watermark, 'bottom-right');
-             $img->save('storage/posts/'.$new_name);
+             $img->save('storage/app/public/posts/'.$new_name);
 
              //image resize
              $img->fit(360, 280, function($constraint){
              $constraint->aspectRatio();
-             })->save('storage/thumb/'.$new_name);
+             })->save('storage/app/public/thumb/'.$new_name);
 
         }
 
@@ -113,6 +113,7 @@ class PostController extends Controller
 
         public function destroy($id){
             $post=Post::findOrFail($id);
+            // dd(Storage::disk());
             Storage::disk('public')->delete('posts/'.$post->img);
             Storage::disk('public')->delete('thumb/'.$post->img);
             $post->delete();

@@ -27,6 +27,7 @@ Route::post('/contact','SiteController@contact')->name('contact');
 Route::namespace('Admin')->name('admin.')->middleware('auth')->prefix('/c-admin')->group(function(){
 
 Route::get('/', 'Admincontroller@index')->name('dashboard');
+Route::resource('/teachers','TeacherController');
 Route::resource('/feedback', 'FeedbackController');
 
 Route::resource('/posts','PostController');

@@ -6,17 +6,21 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Contact;
 use App\Message;
+use App\Teacher;
 use App\Services\SendTelegramService;
 class SiteController extends Controller
 {
 
     public function index()
     {
-        return view('index');
+        $teachers=Teacher::all();
+        $fri=Post::orderBy('id','asc')->limit(3)->get()    ;
+        return view('index',compact('fri','teachers'));
     }
 
     public function about(){
-        return view('about-us');
+        $teachers=Teacher::all();
+        return view('about-us',compact('teachers'));
     }
 
     public function contact_us(){
@@ -31,6 +35,7 @@ class SiteController extends Controller
             'subject'=>'required',
             'message'=>'required'
     ]);
+    // dd($request);
         $contact=new Contact([
             'name'=>$request->post('name'),
             'email'=>$request->post('email'),
@@ -52,6 +57,7 @@ class SiteController extends Controller
     {
         $post=Post::findOrFail($id);
         $fours=Post::orderBy('views','asc')->limit(5)->get();
+        $post->increment('views');
         return view('show',compact('post','fours'));
     }
 
@@ -64,8 +70,8 @@ class SiteController extends Controller
             'phone'=>'required|min:9|max:9'
         ]);
 
-        $message='Ism: '.$data['last_name'].PHP_EOL;
-        $message.='Familya: '.$data['first_name'].PHP_EOL;
+        $message='Ism: '.$data['first_name'].PHP_EOL;
+        $message.='Familya: '.$data['last_name'].PHP_EOL;
         $message.='Kurs nomi: '.$data['course'].PHP_EOL;
         $message.='Tel: +998'.$data['phone'];
 

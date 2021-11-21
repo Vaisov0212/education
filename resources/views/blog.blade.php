@@ -21,7 +21,7 @@
 
         <div class="col-md-6 col-lg-4 ftco-animate">
           <div class="blog-entry">
-            <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('../storage/posts/{{$item->img}}');">
+            <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('/storage/app/public/posts/{{$item->img}}');">
                               <div class="meta-date text-center p-2">
                 <span class="day">{{$item->created_at->format('d')}}</span>
                 <span class="mos">{{$item->created_at->format('M')}}</span>
@@ -29,7 +29,8 @@
               </div>
             </a>
             <div class="text bg-white p-4">
-              <h3 class="heading"><a href="#">{{$item->subject}}</a></h3>
+              <h3 class="heading"><a href="#">{{substr("$item->subject",0,60)}}...</a></h3>
+              @if(strlen("$item->subject")<31) <br>@endif
               <p>{{substr("$item->text",0,120)}}...</p>
               <div class="d-flex align-items-center mt-4">
                   <p class="mb-0"><a href="{{route('show_blog',$item->id)}}" class="btn btn-success">Batafsil <span class="ion-ios-arrow-round-forward"></span></a></p>

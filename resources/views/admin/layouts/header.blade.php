@@ -27,11 +27,11 @@
 					<span class="icon-bar"></span></button>
 				<a class="navbar-brand" ><span>ST</span>AR</a>
 				<ul class="nav navbar-top-links navbar-right">
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="{{route('admin.message.index')}}">
-					<em class="fa fa-envelope"></em>@if($smsMessage<0)<span class="label label-danger">{{$smsMessage}}</span>@endif
+					<li class="dropdown"><a class="dropdown-toggle count-info"  href="{{route('admin.message.index')}}">
+					<em class="fa fa-envelope"></em>@if($smsMessage>0)<span class="label label-danger">{{$smsMessage}}</span>@endif
 					</a>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle count-info"  data-toggle="dropdown" href="{{route('admin.feedback.index')}}">
+					<li class="dropdown"><a class="dropdown-toggle count-info"   href="{{route('admin.feedback.index')}}">
 						<em class="fa fa-bell"></em>@if($smsContact>0)<span class="label label-info">{{$smsContact}}</span>@endif
 					</a>
 					</li>
@@ -66,7 +66,7 @@
 			<li  class="@if($title=="Uy") active  @endif "  ><a href="{{route('admin.dashboard')}}"><em class="fa fa-dashboard">&nbsp;</em> Uy Sahifa</a></li>
 			<li @if($title=='Sorovlar') class="active"@endif  ><a href="{{route('admin.message.index')}}"><em class="fa fa-calendar">&nbsp;</em> So'rovlar</a></li>
             <li class="@if($title=="Yangiliklar") active  @endif "  ><a href="{{route('admin.posts.index')}}"><em class="fa fa-navicon">&nbsp;</em> Yangiliklar</a></li>
-
+            <li @if($title=='Xodimlar') class="active"@endif  ><a href="{{route('admin.teachers.index')}}"><em class="glyphicon glyphicon-envelope"></em> Xodimlar</a></li>
 			<li @if($title=='Xabarlar') class="active"@endif  ><a href="{{route('admin.feedback.index')}}"><em class="glyphicon glyphicon-envelope"></em> Xabarlar</a></li>
 
 
