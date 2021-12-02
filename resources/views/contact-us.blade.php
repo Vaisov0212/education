@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
     <div class="col-md-9 ftco-animate text-center">
-        <h1 class="mb-2 bread">Contact Us</h1>
-        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
+        <h1 class="mb-2 bread">Bog'lanish</h1>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Bosh Sahifa <i class="ion-ios-arrow-forward"></i></a></span> <span>>Bog'lanish <i class="ion-ios-arrow-forward"></i></span></p>
     </div>
     </div>
 </div>
@@ -40,26 +40,26 @@
       <div class="row d-flex mb-5 contact-info">
         <div class="col-md-3 d-flex">
             <div class="bg-light align-self-stretch box p-4 text-center">
-                <h3 class="mb-4">Address</h3>
-              <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+                <h3 class="mb-4">Manzil:</h3>
+              <p>Al-Xorazimiy ko'chasi 10-uy, Urgench Kharezm Uzbekistan</p>
             </div>
         </div>
         <div class="col-md-3 d-flex">
             <div class="bg-light align-self-stretch box p-4 text-center">
-                <h3 class="mb-4">Contact Number</h3>
-              <p><a href="tel://1234567920">+ 1235 2355 98</a></p>
+                <h3 class="mb-4">bog'lanish uchun:</h3>
+              <p><a >+ 998 91 421 71 30</a></p>
             </div>
         </div>
         <div class="col-md-3 d-flex">
             <div class="bg-light align-self-stretch box p-4 text-center">
-                <h3 class="mb-4">Email Address</h3>
-              <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                <h3 class="mb-4">Elektron manzil:</h3>
+              <p><a href="mailto:info@yoursite.com">infostar@bk.ru</a></p>
             </div>
         </div>
         <div class="col-md-3 d-flex">
             <div class="bg-light align-self-stretch box p-4 text-center">
-                <h3 class="mb-4">Website</h3>
-              <p><a href="#">yoursite.com</a></p>
+                <h3 class="mb-4">Web Sayt</h3>
+              <p><a href="#">star.epizy.com</a></p>
             </div>
         </div>
       </div>
@@ -68,24 +68,25 @@
 
       <section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
           <div class="container">
+            <div id="ot"></div>
               <div class="row d-flex align-items-stretch no-gutters">
                   <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
-                      <form action="{{route('contact')}}" method="POST" enctype="multipart/form-data" >
+                      <form id="form1"  method="POST" action="{{route('contact')}}" enctype="multipart/form-data" >
                         @csrf
             <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="Ism, Familya" required >
+              <input id="name" type="text" class="form-control" name="name" placeholder="Ism, Familya" required >
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="email" placeholder="Email" required >
+              <input id="email" type="text" class="form-control" name="email" placeholder="Email" required >
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="subject" placeholder="Mavzu" required >
+              <input id="subject" type="text" class="form-control" name="subject" placeholder="Mavzu" required >
             </div>
             <div class="form-group">
               <textarea  id="message" cols="30" rows="7" name="message" class="form-control" placeholder="Xabar matni" required></textarea>
             </div>
             <div class="form-group">
-                <button class="btn btn-warning py-3 px-5" > Yuborish </button>
+                <button type="submit" id="btn" class="btn btn-warning py-3 px-5" > Yuborish </button>
             </div>
           </form>
         </div>
@@ -95,6 +96,7 @@
     </div>
 </div>
 </section>
+
 
 
   @include('layouts/footer')

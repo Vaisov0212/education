@@ -267,11 +267,9 @@
                         <div class="select-wrap" >
                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                             <select name="course" id=""  class="form-control" >
-                            <option  style="background-color:#1eaaf1" value="Rus tili">Rus tili</option>
-                            <option style="background-color:#1eaaf1" value="Arab tili">Arab tili</option>
-                            <option style="background-color:#1eaaf1" value="Ingillis tili">Ingillis tili</option>
-                             <option style="background-color: #1eaaf1" value="Matematika">Matematika</option>
-                            <option style="background-color: #1eaaf1" value="IT">IT</option>
+                            @foreach ( $items as $item )
+                            <option  style="background-color:#1eaaf1" value="{{$item->course_name}}">{{$item->course_name}}</option>
+                            @endforeach
                             </select>
                         </div>
                     </div>
@@ -318,9 +316,10 @@
               </div>
             </a>
             <div class="text bg-white p-4">
-              <h3 class="heading"><a >{{substr("$item->subject",0,60)}}...</a></h3>
-                        @if(strlen($item->subject)<=30) <br> <br> @endif
-              <p>{{substr("$item->text",0,120)}}...</p>
+
+                  <h3 class="heading"><a >{{substr("$item->subject",0,30)}}...</a></h3>
+
+              <p>{{substr("$item->text",0,122)}}...</p>
               <div class="d-flex align-items-center mt-4">
                   <p class="mb-0"><a href="{{route('show_blog',$item->id)}}" class="btn btn-secondary">Batafsil <span class="ion-ios-arrow-round-forward"></span></a></p>
                   <p class="ml-auto mb-0">

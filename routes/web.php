@@ -28,11 +28,13 @@ Route::namespace('Admin')->name('admin.')->middleware('auth')->prefix('/c-admin'
 
 Route::get('/', 'Admincontroller@index')->name('dashboard');
 Route::resource('/teachers','TeacherController');
+Route::resource('/course','CourseController');
 Route::resource('/feedback', 'FeedbackController');
 
 Route::resource('/posts','PostController');
 
 Route::resource('/message','MessageController');
+Route::resource('/profile', 'ProfileController');
 
 });
 

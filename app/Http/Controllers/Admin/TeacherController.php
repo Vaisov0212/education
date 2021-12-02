@@ -123,8 +123,7 @@ class TeacherController extends Controller
         $this->validate($request,[
             'name'=>'required',
             'profession'=>'required',
-            'about'=>'required',
-            't_img'=>'required'
+            'about'=>'required'
         ]);
 
         if(!empty($request->file('t_img')))
@@ -157,7 +156,7 @@ class TeacherController extends Controller
              'about'=>$request->post('about'),
              't_img'=>$new_name
          ]);
-         return redirect()->route('admin.teachers.index')->with('update','Malumotlar saqlandi !');
+         return redirect()->route('admin.teachers.index')->with('success','Malumotlar saqlandi !');
 
     }
 

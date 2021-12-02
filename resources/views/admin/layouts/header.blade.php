@@ -48,7 +48,7 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+				<img src="/storage/app/public/user.png" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">Admin</div>
@@ -64,10 +64,12 @@
 		</form>
 		<ul class="nav menu">
 			<li  class="@if($title=="Uy") active  @endif "  ><a href="{{route('admin.dashboard')}}"><em class="fa fa-dashboard">&nbsp;</em> Uy Sahifa</a></li>
-			<li @if($title=='Sorovlar') class="active"@endif  ><a href="{{route('admin.message.index')}}"><em class="fa fa-calendar">&nbsp;</em> So'rovlar</a></li>
+			<li @if($title=='Sorovlar') class="active"@endif  ><a href="{{route('admin.message.index')}}"><em class="fa fa-comments">&nbsp;</em> So'rovlar</a></li>
             <li class="@if($title=="Yangiliklar") active  @endif "  ><a href="{{route('admin.posts.index')}}"><em class="fa fa-navicon">&nbsp;</em> Yangiliklar</a></li>
-            <li @if($title=='Xodimlar') class="active"@endif  ><a href="{{route('admin.teachers.index')}}"><em class="glyphicon glyphicon-envelope"></em> Xodimlar</a></li>
+            <li @if($title=='Kurslar') class="active"@endif  ><a href="{{route('admin.course.index')}}"><em class="fa fa-users "></em> Kurslar</a></li>
+            <li @if($title=='Xodimlar') class="active"@endif  ><a href="{{route('admin.teachers.index')}}"><em class="fa fa-calendar"></em> Xodimlar</a></li>
 			<li @if($title=='Xabarlar') class="active"@endif  ><a href="{{route('admin.feedback.index')}}"><em class="glyphicon glyphicon-envelope"></em> Xabarlar</a></li>
+            <li @if($title=='Sozlamalar') class="active"@endif  ><a href="{{route('admin.profile.index')}}"><em class="fa fa-gear"></em> Sozlamalar</a></li>
 
 
 		</ul>

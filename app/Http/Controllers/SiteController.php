@@ -7,20 +7,25 @@ use App\Post;
 use App\Contact;
 use App\Message;
 use App\Teacher;
+use App\Course;
+use App\Http\Controllers\Controller;
 use App\Services\SendTelegramService;
+use Illuminate\Support\Facades\Validator;
 class SiteController extends Controller
 {
 
     public function index()
     {
+        $items=Course::all();
         $teachers=Teacher::all();
         $fri=Post::orderBy('id','asc')->limit(3)->get()    ;
-        return view('index',compact('fri','teachers'));
+        return view('index',compact('fri','teachers','items'));
     }
 
     public function about(){
         $teachers=Teacher::all();
-        return view('about-us',compact('teachers'));
+        $course=Course::all();
+        return view('about-us',compact('teachers','course'));
     }
 
     public function contact_us(){
@@ -35,6 +40,14 @@ class SiteController extends Controller
             'subject'=>'required',
             'message'=>'required'
     ]);
+
+        // $validator=validator::make($request, $rules);
+        // if($validator->fails()){
+        //     return response()->json([
+        //         'status'=>false,
+        //         'data'=>$validator
+        //     ]);
+        // }
     // dd($request);
         $contact=new Contact([
             'name'=>$request->post('name'),
@@ -44,7 +57,7 @@ class SiteController extends Controller
             'report'=>false
         ]);
         $contact->save();
-        return redirect()->back()->with('success','Xabar muofaqiyatli jo`natildi');
+        return redirect()->back()->with('success','Xabar yuborildi !');
     }
 
     public function blog(){
@@ -56,9 +69,10 @@ class SiteController extends Controller
     public function show($id)
     {
         $post=Post::findOrFail($id);
-        $fours=Post::orderBy('views','asc')->limit(5)->get();
+        $course=Course::all();
+        $fours=Post::orderBy('views','asc')->limit(4)->get();
         $post->increment('views');
-        return view('show',compact('post','fours'));
+        return view('show',compact('post','fours','course'));
     }
 
     public function appStore(Request $request){

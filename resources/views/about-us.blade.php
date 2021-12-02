@@ -204,57 +204,19 @@
   </div>
 </div>
         <div class="row">
+            @foreach ($course as $item )
             <div class="col-md-6 course d-lg-flex ftco-animate">
-                <div class="img" style="background-image: url(images/course/english01.jpg);"></div>
+                <div class="img" style="background-image: url('/storage/app/public/course/{{$item->course_img}}');"></div>
                 <div class="text bg-light p-4">
-                    <h3><a href="#">Arts Lesson</a></h3>
-                    <p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
-                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+                    <h3><a>{{$item->course_name}}</a></h3>
+                    <p class="subheading"><span>Kurs vaqti:</span>{{$item->course_time}}</p>
+                    <p>{{substr("$item->about",0,150)}}..</p>
                 </div>
             </div>
-            <div class="col-md-6 course d-lg-flex ftco-animate">
-                <div class="img" style="background-image: url(images/course/ielts01.jpg);"></div>
-                <div class="text bg-light p-4">
-                    <h3><a href="#">Language Lesson</a></h3>
-                    <p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
-                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-                </div>
-            </div>
-            <div class="col-md-6 course d-lg-flex ftco-animate">
-                <div class="img" style="background-image: url(images/course/arab01.jpg);"></div>
-                <div class="text bg-light p-4">
-                    <h3><a href="#">Music Lesson</a></h3>
-                    <p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
-                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-                </div>
-            </div>
-            <div class="col-md-6 course d-lg-flex ftco-animate">
-                <div class="img" style="background-image: url(images/course/koreys01.jpg);"></div>
-                <div class="text bg-light p-4">
-                    <h3><a href="#">Sports Lesson</a></h3>
-                    <p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
-                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-                </div>
-            </div>
-             <div class="col-md-6 course d-lg-flex ftco-animate">
-                <div class="img" style="background-image: url(images/course/math01.jpg);"></div>
-                <div class="text bg-light p-4">
-                    <h3><a href="#">Sports Lesson</a></h3>
-                    <p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
-                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-                </div>
-            </div>
-             <div class="col-md-6 course d-lg-flex ftco-animate">
-                <div class="img" style="background-image: url(images/course/rus01.jpg);"></div>
-                <div class="text bg-light p-4">
-                    <h3><a href="#">Rus tili</a></h3>
-                    <p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
-                    <p>"STAR" o'quv markazida "Rus tili'' kursiga qabul davom etmoqda! Rus tili - jahonda keng tarqalgan tildir
-</p>
-                </div>
-            </div>
+
+@endforeach
         </div>
-    </div>
+
 </section>
 
 

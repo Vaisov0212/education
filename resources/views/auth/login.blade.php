@@ -16,10 +16,10 @@
       <div class="row">
         <div class="col-sm-6 login-section-wrapper">
           <div class="brand-wrapper">
-            <img src="/images/logo.svg" alt="logo" class="logo">
+            <img src="logo.png" height="120px" width="180px" alt="logo">
           </div>
           <div class="login-wrapper my-auto">
-            <h1 class="login-title">Log in</h1>
+            <h1 class="login-title">Kirish</h1>
             <form  method="POST" action="{{ route('login') }}">
                 @csrf
               <div class="form-group">

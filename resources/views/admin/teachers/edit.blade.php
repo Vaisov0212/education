@@ -9,7 +9,19 @@
             <li class="active"><a href="{{route('admin.teachers.index')}}" >Xodimlar</a></li>
         </ol>
     </div><!--/.row-->
-
+    <div class="row">
+        <div class="col-lg-12">
+        @if(count($errors) > 0 )
+        <div class="alert bg-warning" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>
+            <ul>
+                 @foreach($errors->all() as $error )
+                 <li>{{$error }} </li>
+                 @endforeach
+           </ul>
+          </div>
+        @endif
+        </div>
+    </div><!--/.row-->
     <div class="panel panel-default">
         <div class="panel-heading">Yangilash</div>
         <div class="panel-body">
